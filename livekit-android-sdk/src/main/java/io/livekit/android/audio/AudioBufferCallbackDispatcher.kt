@@ -24,16 +24,70 @@ import java.nio.ByteBuffer
  */
 class AudioBufferCallbackDispatcher : livekit.org.webrtc.audio.JavaAudioDeviceModule.AudioBufferCallback {
     var bufferCallback: AudioBufferCallback? = null
+    private var callCount = 0
 
     override fun onBuffer(buffer: ByteBuffer, audioFormat: Int, channelCount: Int, sampleRate: Int, bytesRead: Int, captureTimeNs: Long): Long {
-        return bufferCallback?.onBuffer(
+        callCount++
+        
+        // 调试：每100次调用打印一次状态
+        if (callCount % 100 == 0) {
+            android.util.Log.d("AudioBufferCallbackDispatcher", "🎤 WebRTC音频回调 #$callCount - 格式:$audioFormat 声道:$channelCount 采样率:$sampleRate 缓冲区:${buffer.remaining()}字节")
+        }
+        
+        val callback = bufferCallback
+        if (callback == null) {
+            if (callCount <= 5) { // 只在前5次打印警告
+                android.util.Log.w("AudioBufferCallbackDispatcher", "⚠️ 音频回调被调用但没有设置bufferCallback处理器")
+            }
+            return 0L
+        }
+        
+        return callback.onBuffer(
             buffer = buffer,
             audioFormat = audioFormat,
             channelCount = channelCount,
             sampleRate = sampleRate,
             bytesRead = bytesRead,
             captureTimeNs = captureTimeNs,
-        ) ?: 0L
+        )
+    }
+    
+    fun getCallCount(): Int = callCount
+    
+    /**
+     * 手动触发音频回调 - 用于独立的自定义音频输入
+     * 
+     * 这个方法允许外部代码直接驱动音频回调，绕过WebRTC的麦克风输入机制
+     */
+    fun triggerManualAudioCallback(
+        audioData: ByteBuffer,
+        audioFormat: Int,
+        channelCount: Int,
+        sampleRate: Int,
+        captureTimeNs: Long = System.nanoTime()
+    ): Long {
+        callCount++
+        
+        if (callCount % 100 == 0) {
+            android.util.Log.d("AudioBufferCallbackDispatcher", "🔧 手动音频回调 #$callCount - 格式:$audioFormat 声道:$channelCount 采样率:$sampleRate 数据:${audioData.remaining()}字节")
+        }
+        
+        val callback = bufferCallback
+        if (callback == null) {
+            if (callCount <= 5) {
+                android.util.Log.w("AudioBufferCallbackDispatcher", "⚠️ 手动音频回调被调用但没有设置bufferCallback处理器")
+            }
+            return 0L
+        }
+        
+        return callback.onBuffer(
+            buffer = audioData,
+            audioFormat = audioFormat,
+            channelCount = channelCount,
+            sampleRate = sampleRate,
+            bytesRead = audioData.remaining(),
+            captureTimeNs = captureTimeNs
+        )
     }
 }
 

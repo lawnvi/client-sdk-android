@@ -43,7 +43,7 @@ abstract class Track(
 
     var kind = kind
         internal set
-    var sid: String? = null
+    var sid: String = ""
         internal set
     var streamState: StreamState by flowDelegate(StreamState.PAUSED) { newValue, oldValue ->
         if (newValue != oldValue) {

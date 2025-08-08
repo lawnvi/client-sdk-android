@@ -46,28 +46,10 @@ abstract class MixerAudioBufferCallback : AudioBufferCallback {
         val customAudioBuffer = response?.byteBuffer
 
         if (customAudioBuffer != null) {
-            buffer.order(ByteOrder.nativeOrder()).position(0)
-            customAudioBuffer.order(ByteOrder.nativeOrder()).position(0)
-
-            when (audioFormat) {
-                AudioFormat.ENCODING_PCM_8BIT -> {
-                    mixByteBuffers(original = buffer, customAudioBuffer)
-                }
-
-                AudioFormat.ENCODING_PCM_16BIT,
-                AudioFormat.ENCODING_DEFAULT,
-                -> {
-                    mixShortBuffers(original = buffer.asShortBuffer(), customAudioBuffer.asShortBuffer())
-                }
-
-                AudioFormat.ENCODING_PCM_FLOAT -> {
-                    mixFloatBuffers(original = buffer.asFloatBuffer(), customAudioBuffer.asFloatBuffer())
-                }
-
-                else -> {
-                    LKLog.w { "Unsupported audio format: $audioFormat" }
-                }
-            }
+            // CustomAudioMixer已经处理了混音，直接替换原始缓冲区内容
+            buffer.clear()
+            buffer.put(customAudioBuffer)
+            buffer.flip()
         }
 
         val mixedCaptureTime = if (captureTimeNs != 0L) {

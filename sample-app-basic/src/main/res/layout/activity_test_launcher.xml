@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center"
+    tools:context=".TestLauncherActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LiveKit Android SDK\n音频功能测试"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="32dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="选择要运行的测试："
+        android:textSize="16sp"
+        android:layout_marginBottom="24dp" />
+
+    <Button
+        android:id="@+id/btnOriginalTest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="原始测试\n(基本的PCM音频输入)"
+        android:textSize="16sp"
+        android:padding="16dp"
+        android:layout_marginBottom="12dp" />
+
+    <Button
+        android:id="@+id/btnPCMTest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="PCM测试\n(PCM文件播放和录制)"
+        android:textSize="16sp"
+        android:padding="16dp"
+        android:layout_marginBottom="12dp" />
+
+    <Button
+        android:id="@+id/btnComprehensiveTest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="🚀 综合测试\n(完整的音频功能测试)"
+        android:textSize="16sp"
+        android:padding="16dp"
+        android:backgroundTint="@android:color/holo_green_dark"
+        android:textColor="@android:color/white"
+        android:layout_marginBottom="24dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="综合测试包含：\n• 自定义音频数据源测试\n• 远程音频处理测试\n• 扬声器播放控制测试\n• 音频质量分析\n• 自动生成测试报告"
+        android:textSize="12sp"
+        android:background="@android:color/darker_gray"
+        android:padding="12dp"
+        android:textColor="@android:color/white" />
+
+</LinearLayout>

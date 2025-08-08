@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/constraint"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ComprehensiveAudioTestActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LiveKit Android SDK 音频功能综合测试"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:id="@+id/statusTextView"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="准备开始测试..."
+            android:background="@android:color/black"
+            android:textColor="@android:color/white"
+            android:padding="8dp"
+            android:fontFamily="monospace"
+            android:textSize="12sp"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="单项测试"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/btnTestCustomAudioSource"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="测试自定义音频数据源"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/btnTestRemoteAudioProcessing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="测试远程音频数据处理"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/btnTestPlaybackControl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="测试扬声器播放控制"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="综合测试"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/btnRunAllTests"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🚀 运行所有测试"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/btnStopTests"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="⏹️ 停止测试"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="测试说明"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1. 自定义音频数据源：测试从PCM文件或缓冲区提供音频数据的功能\n\n2. 远程音频数据处理：测试拦截和处理服务端发来的音频数据\n\n3. 扬声器播放控制：测试是否可以控制音频是否通过扬声器播放\n\n运行测试前请确保：\n• 设备已连接到网络\n• 已获取音频录制权限\n• 存在其他参与者发送音频"
+            android:textSize="12sp"
+            android:lineSpacingExtra="2dp" />
+
+    </LinearLayout>
+
+</ScrollView>

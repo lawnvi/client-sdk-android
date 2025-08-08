@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RemoteAudioProcessingTestActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="远程音频处理测试"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:id="@+id/statusTextView"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:text="准备开始测试..."
+            android:background="@android:color/black"
+            android:textColor="@android:color/white"
+            android:padding="8dp"
+            android:fontFamily="monospace"
+            android:textSize="12sp"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="步骤1: 连接房间"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/btnConnectRoom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="连接到房间"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="步骤2: 选择音频输入方式"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/btnStartMicrophone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🎤 启动麦克风（标准输入）"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/btnSetupCustomAudio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🎵 设置自定义音频输入（PCM文件）\n禁用麦克风，只使用PCM数据"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:textColor="@android:color/white"
+            android:padding="12dp"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/btnSendPCMChunk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📤 发送PCM数据块（100ms）"
+            android:backgroundTint="@android:color/holo_purple"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="步骤3: 选择远程音频处理模式"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/btnStartProcessingWithPlayback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🔊 处理音频 + 扬声器播放\n（推荐：可以听到确认收到数据）"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:textColor="@android:color/white"
+            android:padding="12dp"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/btnStartProcessingOnly"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🔇 仅处理音频（静音播放）\n（使用muteWithProcessor）"
+            android:backgroundTint="@android:color/holo_orange_dark"
+            android:textColor="@android:color/white"
+            android:padding="12dp"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/btnStopProcessing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="⏹️ 停止处理"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="音频统计信息"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/audioStatsTextView"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:text="等待音频数据..."
+            android:background="@android:color/darker_gray"
+            android:textColor="@android:color/white"
+            android:padding="8dp"
+            android:fontFamily="monospace"
+            android:textSize="11sp"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="测试说明"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="功能说明：\n• 音频输入：支持麦克风和自定义PCM文件两种方式\n• 音频输出：自定义处理服务端音频数据\n• 播放控制：两种模式对比\n\n自定义音频输入测试：\n1. 点击'设置自定义音频'输入创建PCM轨道\n2. 点击'发送PCM数据块'按钮发送100ms音频数据\n3. 可多次点击发送按钮，模拟按需发送\n\n远程音频处理模式：\n1. 处理+播放：使用setAudioDataProcessor\n2. 仅处理：使用muteWithProcessor（已修复静音）\n\n录制的音频文件和日志会保存到应用外部存储目录。"
+            android:textSize="12sp"
+            android:lineSpacingExtra="2dp"
+            android:background="#f5f5f5"
+            android:padding="12dp" />
+
+    </LinearLayout>
+
+</ScrollView>
