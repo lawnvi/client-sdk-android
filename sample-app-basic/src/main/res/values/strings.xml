@@ -1,3 +1,23 @@
 <resources>
-    <string name="app_name">sample-app-basic</string>
+    <string name="app_name">LiveKit Basic Sample</string>
+    <string name="connect">Connect</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="url_hint">LiveKit URL (wss://...)</string>
+    <string name="token_hint">Access Token</string>
+    <string name="status_disconnected">Disconnected</string>
+    <string name="status_connecting">Connecting...</string>
+    <string name="status_connected">Connected</string>
+    <string name="microphone">Microphone</string>
+    <string name="pcm_file">PCM File</string>
+    <string name="sine_wave">Sine Wave</string>
+    <string name="audio_source">Audio Source:</string>
+    <string name="start_audio_input">Start Custom Audio</string>
+    <string name="stop_audio_input">Stop Custom Audio</string>
+    <string name="enable_mic">Enable Microphone</string>
+    <string name="disable_mic">Disable Microphone</string>
+    <string name="replace_mic">Replace Microphone</string>
+    <string name="mix_with_mic">Mix with Microphone</string>
+    <string name="custom_audio_controls">Custom Audio Controls</string>
+    <string name="room_controls">Room Controls</string>
+    <string name="select_pcm_file">Select PCM File</string>
 </resources>
